@@ -1,12 +1,14 @@
 import React from 'react';
 import Container from '@material-ui/core/Container'
+import Top10Table from './components/Table'
+
 
 import './App.css';
 
 function App() {
   return (
     <Container fixed>
-      <h1>Hello World</h1>
+      <Top10Table />
     </Container>
   );
 }
