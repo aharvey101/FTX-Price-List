@@ -4,6 +4,8 @@ const FTXrest = require('ftx-api-rest')
 const pair = 'BTC-PERP'
 
 const ftx = new FTXrest({
+  key: '1',
+  secret: '1'
 })
 
 router.get('/', (req, res) => {
