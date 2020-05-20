@@ -12,7 +12,19 @@ router.get('/', (req, res) => {
   ftx.request({
     method: 'GET',
     path: '/markets'
-  }).then(acc => { res.json(acc) })
+  }).then(market => {
+    //get Perp contracts out
+    //let regex = new RegExp('/PERP/gm')
+    let newArr = market.result.filter(({ name }) => name.includes('PERP'))
+    // const fitered = market.result.filter((name) => {
+    //   return name.name.test(regex);
+    // });
+    //Sort by 24hr volume
+    newArr.sort((a, b) => a.quoteVolume24h < b.quoteVolume24h ? 1 : -1)
+
+    let top10 = newArr.slice(0, 9)
+    res.json(top10)
+  })
     .catch(err => console.log(err))
 })
 

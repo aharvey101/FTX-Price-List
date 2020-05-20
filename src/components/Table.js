@@ -6,18 +6,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-
-// backend server serves the data to the front end, which displays, anytime the data changes, state is updated and frontend refreshes
-// To test, just make some json data up and serve to front end
-
-
-//worldCoinIndexApi key : n6XX1FqVJcS4ezcqeXrptgBcwkObt6
-
 const Row = props => (
   <TableRow>
     <TableCell>{props.crypto.name}</TableCell>
     <TableCell>{props.crypto.type}</TableCell>
     <TableCell>{props.crypto.last}</TableCell>
+    <TableCell>{props.crypto.quoteVolume24h}</TableCell>
   </TableRow>
 )
 
@@ -27,13 +21,7 @@ export default class Top10Table extends Component {
     super()
 
     this.state = {
-      data: {
-        result: [{
-          name: 'BTC-PERP',
-          type: 'perpetual contract',
-          last: 1000
-        }]
-      }
+      data: []
     }
 
     this.cryptoList = this.cryptoList.bind(this)
@@ -43,6 +31,7 @@ export default class Top10Table extends Component {
   componentDidMount() {
     axios.get('http://localhost:3001/ticker')
       .then(res => {
+        console.log(res.data)
         this.setState({ data: res.data })
       })
     this.startUpdate()
@@ -57,10 +46,12 @@ export default class Top10Table extends Component {
     }, 500)
   }
   cryptoList() {
-    return this.state.data.result.map(crypto => {
+
+    return this.state.data.map(crypto => {
       return <Row crypto={crypto} key={crypto.name} />
     })
   }
+
 
   render() {
     return (
@@ -70,6 +61,7 @@ export default class Top10Table extends Component {
             <TableCell>Cryto</TableCell>
             <TableCell>Type</TableCell>
             <TableCell>Price</TableCell>
+            <TableCell>Volume 24hr</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
