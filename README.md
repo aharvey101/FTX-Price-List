@@ -1,4 +1,4 @@
-### FTX Top 10 App
+# FTX Top 10 App
 
 This app simply displays FTX's Perpetual pairs top 10 by 24hr volume using the public API and React to refresh every half a second
 
