@@ -4,12 +4,16 @@ This app simply displays FTX's Perpetual pairs top 10 by 24hr volume using the p
 
 ## Installation
 
-To get it to work there are 3 steps:
+To get it to work you need to start the backend then the front end:
 
-1. npm i
-2. cd backend/ && npm i
-3. node app.js
-4. open a new terminal tab
-4. cd ..
-5. npm start
-3. Go to http://localhost:3000
+To start the backend:
+1. cd backend/ && npm i
+2. node app.js
+
+To start the frontend
+
+1. new termital tab
+2. cd to root of app
+3. npm i
+4. npm start
+5. It will ask you if you want to start on a different port, type y and enter
