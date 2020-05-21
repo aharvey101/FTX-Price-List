@@ -6,6 +6,10 @@ This app simply displays FTX's Perpetual pairs top 10 by 24hr volume using the p
 
 To get it to work there are 3 steps:
 
-1. run npm i
+1. npm i
 2. cd backend/ && npm i
+3. node app.js
+4. open a new terminal tab
+4. cd ..
+5. npm start
 3. Go to http://localhost:3000
